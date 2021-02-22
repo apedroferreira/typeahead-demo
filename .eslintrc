@@ -45,6 +45,7 @@
         {
           "groups": ["builtin", "external", "internal", "parent", "sibling", "index"]
         }
-      ]
+      ],
+      "react/prop-types": 0
     }
   }

@@ -4,8 +4,9 @@ import 'styled-components'
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    color: {
-      primary: string
+    font: {
+      body: Record<string, FlattenSimpleInterpolation>
     }
+    color: Record<string, string>
   }
 }

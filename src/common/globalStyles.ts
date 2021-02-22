@@ -1,12 +1,17 @@
 import { css } from 'styled-components'
 
-import { generateMinWidthMediaQuery } from 'utils/styleUtils'
+import { BASE_REM_SIZE, generateMinWidthMediaQuery } from 'utils/styleUtils'
 
 export const theme = {
   color: {
-    primary: '#845adb',
+    contrastLight: '#e6e6e6',
     dark: '#323232',
     light: '#fff',
+    primary: '#845adb',
+    primaryTransparentLight: 'rgba(132, 90, 219, .4)',
+    primaryTransparentMedium: 'rgba(132, 90, 219, .6)',
+    shadowMedium: 'rgba(50, 50, 50, .3)',
+    transparent: 'transparent',
   },
   font: {
     body: {
@@ -59,9 +64,16 @@ export const globalStyles = css`
   }
 
   body {
-    font-size: 1.6rem;
+    font-size: ${BASE_REM_SIZE}rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    ${({ theme }) => theme.font.body.regular}
+  }
+
+  button {
+    background-color: ${({ theme }) => theme.color.transparent};
+    border: none;
+    cursor: pointer;
   }
 
   ${globalAnimations}
