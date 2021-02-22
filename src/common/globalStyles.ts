@@ -86,14 +86,12 @@ export const BREAKPOINTS = {
   XL: 1200,
 }
 
-type BreakpointNameType = keyof typeof BREAKPOINTS
+type BreakpointName = keyof typeof BREAKPOINTS
 
 export const mediaQueries = Object.keys(BREAKPOINTS).reduce(
   (acc, breakpointName) => ({
     ...acc,
-    [breakpointName.toLowerCase()]: generateMinWidthMediaQuery(
-      BREAKPOINTS[breakpointName as BreakpointNameType]
-    ),
+    [breakpointName.toLowerCase()]: generateMinWidthMediaQuery(BREAKPOINTS[breakpointName as BreakpointName]),
   }),
-  {} as Record<'sm' | 'md' | 'lg' | 'xl' | 'xxl', string>
+  {} as Record<'sm' | 'md' | 'lg' | 'xl', string>
 )
