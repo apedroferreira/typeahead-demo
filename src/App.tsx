@@ -1,48 +1,13 @@
 import React, { useState, useCallback } from 'react'
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
-import { globalStyles, theme, mediaQueries } from 'common/globalStyles'
-import { FormContext, FormValue } from 'context/formContext'
+import { AppWrapper, Form, Title } from 'App.styles'
+import { globalStyles, theme } from 'common/globalStyles'
 import { TypeAheadInput } from 'components/TypeAheadInput'
+import { FormContext, FormValue } from 'context/formContext'
 import fruits from 'data/fruits.json'
 
 const GlobalStyle = createGlobalStyle`${globalStyles}`
-
-const AppWrapper = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  max-height: 100vh;
-  min-height: 50rem;
-  padding-top: 14rem;
-  width: 100%;
-
-  ${mediaQueries.sm} {
-    padding-top: 20rem;
-  }
-`
-
-const Title = styled.h1`
-  color: ${theme.color.light};
-  ${({ theme }) => theme.font.body.semiBold}
-  font-size: 2.6rem;
-  margin-bottom: 2rem;
-
-  ${mediaQueries.sm} {
-    font-size: 3.2rem;
-  }
-`
-
-const Form = styled.form`
-  padding: 0 1.6rem;
-  width: 100%;
-
-  ${mediaQueries.sm} {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-  }
-`
 
 export const App: React.FC = () => {
   const [formValues, setFormValues] = useState({

@@ -1,117 +1,19 @@
 import React, { useState, useCallback, useContext, useRef, useMemo } from 'react'
-import styled, { keyframes } from 'styled-components'
 
-import { mediaQueries } from 'common/globalStyles'
 import { FormContext } from 'context/formContext'
 import { ENTER_KEY, ARROW_UP_KEY, ARROW_DOWN_KEY } from 'utils/keyboardUtils'
 
-import { CloseIcon } from './icons/CloseIcon'
-
-const Wrapper = styled.div`
-  margin: 0 0rem;
-  max-width: 100%;
-  position: relative;
-
-  ${mediaQueries.sm} {
-    width: 46rem;
-  }
-`
-
-const Label = styled.label<{ isVisible: boolean }>`
-  color: ${({ theme }) => theme.color.light};
-  display: flex;
-  flex-direction: column;
-  ${({ theme }) => theme.font.body.semiBold}
-  font-size: 1.6rem;
-  margin-bottom: 0.6rem;
-  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
-  transform: translateY(${({ isVisible }) => (isVisible ? 0 : '2rem')});
-  transition: 0.2s ease opacity, 0.2s ease transform;
-
-  ${mediaQueries.sm} {
-    font-size: 1.8rem;
-  }
-`
-
-const InputWrapper = styled.div`
-  position: relative;
-`
-
-const Input = styled.input<{ hasTemporaryValue: boolean }>`
-  border: none;
-  border-radius: 1rem;
-  color: ${({ theme, hasTemporaryValue }) => (hasTemporaryValue ? theme.color.primary : theme.color.dark)};
-  ${({ theme }) => theme.font.body.regular}
-  font-size: 2rem;
-  padding: 1.8rem;
-  width: 100%;
-
-  ${mediaQueries.sm} {
-    font-size: 2.2rem;
-    padding: 2rem;
-  }
-`
-
-const HighlightedText = styled.span`
-  color: ${({ theme }) => theme.color.primary};
-  ${({ theme }) => theme.font.body.medium}
-`
-
-const popoverInAnimation = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(-2rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`
-
-const Popover = styled.ul`
-  animation: ${popoverInAnimation} 0.2s ease;
-  background-color: ${({ theme }) => theme.color.light};
-  border-radius: 1rem;
-  box-shadow: 0 0.3rem 0.6rem ${({ theme }) => theme.color.shadowMedium};
-  font-size: 2rem;
-  list-style-type: none;
-  margin: 0;
-  max-height: 26rem;
-  -webkit-overflow-scrolling: touch;
-  overflow-y: scroll;
-  padding: 0.6rem 0rem;
-  position: absolute;
-  top: calc(100% + 1rem);
-  width: 100%;
-
-  ${mediaQueries.sm} {
-    font-size: 2.2rem;
-    max-height: 30rem;
-  }
-`
-
-const PopoverItem = styled.li<{ isActive: boolean }>`
-  background-color: ${({ theme, isActive }) => (isActive ? theme.color.primaryTransparentLight : 'none')};
-  cursor: pointer;
-  padding: 1rem 2rem;
-
-  &:hover {
-    background-color: ${({ theme, isActive }) =>
-      isActive ? theme.color.primaryTransparentMedium : theme.color.contrastLight};
-  }
-`
-
-const ClearButton = styled.button.attrs({ type: 'button' })`
-  align-items: center;
-  animation: fadeIn 0.2s ease;
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
-  position: absolute;
-  right: 0.6rem;
-  top: 50%;
-  transform: translateY(-50%);
-`
+import { CloseIcon } from '../icons/CloseIcon'
+import {
+  ClearButton,
+  HighlightedText,
+  Input,
+  InputWrapper,
+  Label,
+  Popover,
+  PopoverItem,
+  Wrapper,
+} from './TypeAheadInput.styles'
 
 interface TypeAheadInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string

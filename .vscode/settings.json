@@ -2,15 +2,8 @@
   "editor.formatOnSave": false,
   "eslint.alwaysShowStatus": true,
   "eslint.packageManager": "yarn",
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  "colorize.languages": [
-    "javascript"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "colorize.languages": ["javascript"],
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "editor.renderIndentGuides": false,

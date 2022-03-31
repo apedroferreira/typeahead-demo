@@ -41,11 +41,16 @@
     "rules": {
       "import/no-cycle": 1,
       "import/order": [
-        "error",
+        2,
         {
+          "alphabetize": {
+            "order": "asc",
+            "caseInsensitive": true
+          },
           "groups": ["builtin", "external", "internal", "parent", "sibling", "index"]
         }
       ],
-      "react/prop-types": 0
+      "react/prop-types": 0,
+      "@typescript-eslint/restrict-template-expressions": 0
     }
   }
