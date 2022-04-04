@@ -3,7 +3,6 @@ import styled, { css, keyframes } from 'styled-components'
 import { mediaQueries } from 'common/globalStyles'
 
 export const Wrapper = styled.div`
-  margin: 0 0rem;
   max-width: 100%;
   position: relative;
 
